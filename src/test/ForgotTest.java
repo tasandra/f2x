@@ -26,10 +26,26 @@ public class ForgotTest extends BaseTest {
 	@Test
 	public void test() {
 		forgot.load();
-		forgot.forgot("tasandra@mail.ru", "");
+// valid email send email with reset link
+		forgot.forgot("tasandra@mail.ru");
 		String reset = forgot.getEmailReset();
 		assertEquals("RESET PASSWORD", reset);
-		home.closeModal();
+		forgot.closeModal();
+// invalid email error messages		
+		String error = forgot.getErrorMessage("tasa");
+		assertEquals("PLEASE ENTER A VALID EMAIL ADDRESS", error);
+		forgot.closeModal();
+		
+		String error1 = forgot.getValidEmail("tasa@mail.ru");
+		assertEquals("Please enter a correct username", error1);
+		forgot.closeModal();
+		
+		String error2 = forgot.getErrorMessage("");
+		assertEquals("USERNAME NEEDED", error2);
+		forgot.closeModal();
+		
+		
+		
 	}
 
 }

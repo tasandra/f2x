@@ -14,12 +14,10 @@ import pages.HomePage;
 
 public class SigninTest extends BaseTest {
 	private SignIn signin;
-	private HomePage home;
 
 	@Before
 	public void setUp() throws Exception {
 		signin = new SignIn(driver);
-		home = new HomePage(driver);
 	}
 
 	@After
@@ -45,10 +43,10 @@ public class SigninTest extends BaseTest {
 		// check error messages
 		String exError = signin.checkError("tasandra", "password1");	
 		assertEquals("PLEASE ENTER A CORRECT USERNAME AND PASSWORD", exError);
-		home.closeModal();
+		signin.closeModal();
 		
 		String exError1 = signin.checkError("tasandra1", "password");	
 		assertEquals("PLEASE ENTER A CORRECT USERNAME AND PASSWORD", exError1);
-		home.closeModal();
+		signin.closeModal();
 	}
 }

@@ -12,7 +12,7 @@ public class ForgotPass extends HomePage {
 		super(driver);
 	}
 
-	public void forgot(String email, String error) {
+	public void forgot(String email) {
 		driver.findElement(By.cssSelector(".f2x-header-logbox-btn>button")).click();
 		driver.findElement(By.cssSelector(".f2x-input-text-right")).click();
 		driver.findElement(By.xpath("//input[@type='text']")).clear();
@@ -27,4 +27,21 @@ public class ForgotPass extends HomePage {
 				.getText();
 	}
 
+	public String getErrorMessage(String email) {
+		forgot(email);
+		return wait.until((ExpectedConditions.presenceOfElementLocated(By.cssSelector(".error-msg"))))
+				.getText();
+	}
+
+	public String getValidEmail(String email) {
+		forgot(email);
+		return wait
+				.until((ExpectedConditions
+						.presenceOfElementLocated(By.cssSelector(".f2x-modal-reset2-text"))))
+				.getText();
+		
+	}
+	
+	
 }
+
