@@ -30,14 +30,22 @@ public class WorkoutAddTest extends BaseTest {
 		signin.signin("tasandra", "password");
 		WebElement avatar = signin.getAvatar();
 		assertEquals(true, avatar.isDisplayed());
-		// add classes
+		// add class
 		workout.addClasses();
+		workout.saveClasses();
 		WebElement panel = workout.getWorkoutPanel();
 		assertEquals(true, panel.isDisplayed());
+		// drop class
+		workout.goToBuilder();
+		String title = workout.goToBuilder();
+		assertEquals("EXERCISES", title);
+		workout.dragDropClasses();
 		// delete workout
+		workout.deleteWorkout();
 		workout.deleteWorkout();
 		WebElement empty = workout.emptyWorkout();
 		assertEquals(true, empty.isDisplayed());
+
 	}
 
 }
