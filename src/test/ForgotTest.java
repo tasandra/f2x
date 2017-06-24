@@ -11,12 +11,10 @@ import pages.HomePage;
 
 public class ForgotTest extends BaseTest {
 	private ForgotPass forgot;
-	private HomePage home;
 
 	@Before
 	public void setUp() throws Exception {
 		forgot = new ForgotPass(driver);
-		home = new HomePage(driver);
 	}
 
 	@After
@@ -42,9 +40,7 @@ public class ForgotTest extends BaseTest {
 		
 		String error2 = forgot.getErrorMessage("");
 		assertEquals("USERNAME NEEDED", error2);
-		forgot.closeModal();
-		
-		
+		forgot.closeModal();		
 		
 	}
 
