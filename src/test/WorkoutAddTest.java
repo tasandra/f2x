@@ -25,26 +25,33 @@ public class WorkoutAddTest extends BaseTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		signin.load();
 		signin.signin("tasandra", "password");
 		WebElement avatar = signin.getAvatar();
 		assertEquals(true, avatar.isDisplayed());
-		// add class
+		// add two class
+		workout.addClasses();
 		workout.addClasses();
 		workout.saveClasses();
 		WebElement panel = workout.getWorkoutPanel();
 		assertEquals(true, panel.isDisplayed());
-		// drop class
+		workout.deleteWorkout();
+		WebElement empty = workout.emptyWorkout();
+		assertEquals(true, empty.isDisplayed());
+		
+		// drop one class
 		workout.goToBuilder();
 		String title = workout.goToBuilder();
 		assertEquals("EXERCISES", title);
 		workout.dragDropClasses();
-		// delete workout
+		
+		// edit 
+		workout.editWorkout();
+		// delete last class
 		workout.deleteWorkout();
-		workout.deleteWorkout();
-		WebElement empty = workout.emptyWorkout();
-		assertEquals(true, empty.isDisplayed());
+		WebElement empty2 = workout.emptyWorkout();
+		assertEquals(true, empty2.isDisplayed());
 
 	}
 
