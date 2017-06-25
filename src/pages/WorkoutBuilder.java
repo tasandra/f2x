@@ -17,6 +17,7 @@ public class WorkoutBuilder extends HomePage {
 	private By delete = By.xpath("//*[@class = 'f2x-myworkouts-options']/button[3]");
 	private By edit = By.xpath("//*[@class = 'f2x-myworkouts-options']/button");
 	private By deleteConf = By.cssSelector(".f2x-new-button-black");
+	private By save = By.xpath("//*[@class = 'f2x-workout-save-buttons']/button[2]");
 
 	public WorkoutBuilder(WebDriver driver) {
 		super(driver);
@@ -45,14 +46,12 @@ public class WorkoutBuilder extends HomePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("f2x-add-workout")));
 		driver.findElement(By.className("f2x-new-workout-name")).clear();
 		driver.findElement(By.className("f2x-new-workout-name")).sendKeys("workout2");
-		driver.findElement(By.xpath("//div[@class = 'f2x-workout-save-buttons']//button[2]"))
-				.click();
+		driver.findElement(save).click();
 
 	}
 
 	public void saveClasses() {
-		driver.findElement(By.xpath("//div[@class = 'f2x-workout-save-buttons']//button[2]"))
-				.click();
+		driver.findElement(save).click();
 		driver.findElement(By.xpath("//input[@type='text']")).clear();
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("workout");
 		driver.findElement(By.cssSelector(".f2x-button.f2x-button-black")).click();
@@ -73,8 +72,7 @@ public class WorkoutBuilder extends HomePage {
 		// add class
 		driver.findElement(By.xpath("//*[@class = 'f2x-workout-save-buttons']/button")).click();
 		addClasses();
-		driver.findElement(By.xpath("//div[@class = 'f2x-workout-save-buttons']/button[2]"))
-				.click();
+		driver.findElement(save).click();
 		// delete class
 		getWorkoutPanel();
 		actions.moveToElement(driver.findElement(panel)).moveToElement(driver.findElement(edit))
@@ -85,8 +83,7 @@ public class WorkoutBuilder extends HomePage {
 		driver.findElement(By
 				.xpath("//*[@class = 'f2x-configure-workout-slider ps-container ps-theme-default']/div[2]/div"))
 				.click();
-		driver.findElement(By.xpath("//div[@class = 'f2x-workout-save-buttons']/button[2]"))
-				.click();
+		driver.findElement(save).click();
 	}
 
 	public void deleteWorkout() throws InterruptedException {
@@ -94,7 +91,7 @@ public class WorkoutBuilder extends HomePage {
 		actions.moveToElement(driver.findElement(panel)).moveToElement(driver.findElement(delete))
 				.click();
 		actions.perform();
-		
+
 		wait.until(ExpectedConditions.presenceOfElementLocated(deleteConf));
 		driver.findElement(deleteConf).click();
 	}
