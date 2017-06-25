@@ -1,1 +1,7 @@
 /bin/
+/chromedriver.exe
+/geckodriver.exe
+/selenium-server-standalone-3.4.0.jar
+/.settings/
+/.classpath
+/.project
