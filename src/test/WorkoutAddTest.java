@@ -25,7 +25,7 @@ public class WorkoutAddTest extends BaseTest {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() {
 		signin.load();
 		signin.signin("tasandra", "password");
 		WebElement avatar = signin.getAvatar();

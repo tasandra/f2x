@@ -35,14 +35,19 @@ public class WorkoutBuilder extends HomePage {
 		driver.findElement(By.className("f2x-exercise-add")).click();
 
 	}
-
+	
 	public void dragDropClasses() {
-		WebElement drag = driver.findElement(By.className("f2x-exercise-img"));
-		WebElement drop = driver.findElement(By.className("f2x-configure-workout-slider"));
-
-		actions.dragAndDrop(drag, drop);
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.cssSelector("div.f2x-exercise")));
+		WebElement drag = driver.findElement(By.cssSelector("div.f2x-exercise"));
+		WebElement drop = driver.findElement(By.cssSelector(".f2x-configure-workout-empty"));
+		
+		//actions.dragAndDrop(drag, drop);
+		actions.clickAndHold(drag);
 		actions.pause(second);
+		actions.moveToElement(drop).release();
 		actions.perform();
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("f2x-add-workout")));
 		driver.findElement(By.className("f2x-new-workout-name")).clear();
 		driver.findElement(By.className("f2x-new-workout-name")).sendKeys("workout2");
@@ -86,9 +91,11 @@ public class WorkoutBuilder extends HomePage {
 		driver.findElement(save).click();
 	}
 
-	public void deleteWorkout() throws InterruptedException {
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(panel)).moveToElement(driver.findElement(delete))
+	public void deleteWorkout()  {
+		
+		actions.moveToElement(driver.findElement(panel));
+		actions.pause(second);
+		actions.moveToElement(driver.findElement(delete))
 				.click();
 		actions.perform();
 

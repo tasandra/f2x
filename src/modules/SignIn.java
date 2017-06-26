@@ -29,7 +29,7 @@ public class SignIn extends HomePage {
 
 	public String checkError(String username, String password) {
 		signin(username, password);
-		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//form//div[4]")))
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//form/div[1]/div[2]/div/div[3]")))
 				.getText();
 	}
 
