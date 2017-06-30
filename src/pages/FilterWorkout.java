@@ -10,7 +10,7 @@ public class FilterWorkout extends HomePage {
 		super(driver);
 	}
 
-	public void sortAbs() {
+	public void filterAbs() {
 		driver.findElement(
 				By.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[5]/div[2]/button[1]"))
 				.click();
@@ -18,7 +18,7 @@ public class FilterWorkout extends HomePage {
 				.visibilityOfElementLocated(By.cssSelector(".f2x-exercise-img-padding button")));
 	}
 
-	public void sortLegsAndAbs() {
+	public void filterLegsAndAbs() {
 		driver.findElement(
 				By.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[5]/div[2]/button[5]"))
 				.click();

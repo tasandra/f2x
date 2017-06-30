@@ -35,15 +35,15 @@ public class FilterWorkoutTest extends BaseTest {
 		home.load();
 		workout.goToBuilder();
 		
-		filter.sortAbs();
-		List<WebElement> absSort = driver.findElements(By.className("f2x-exercise-img-labels "));
+		filter.filterAbs();
+		List<WebElement> absSort = driver.findElements(By.className("f2x-exercise-img-labels"));
 		for (WebElement abs : absSort) {
 			String label = abs.getText();
 			assertTrue(label.equals("Abs/Core"));
 		}
 		
-		filter.sortLegsAndAbs();
-		List<WebElement> abslegsSort = driver.findElements(By.className("f2x-exercise-img-labels "));
+		filter.filterLegsAndAbs();
+		List<WebElement> abslegsSort = driver.findElements(By.className("f2x-exercise-img-labels"));
 		for (WebElement abs : abslegsSort) {
 			String label = abs.getText();
 			assertTrue(label.equals("Abs/Core"));
