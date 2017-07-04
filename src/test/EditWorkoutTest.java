@@ -40,7 +40,7 @@ public class EditWorkoutTest extends BaseTest {
 		WebElement item = edit.goToMyWorkouts();
 		assertEquals(true, item.isDisplayed());
 
-		// add classes
+		// add classes, get size before add class
 		List<WebElement> classes = driver.findElements(By.cssSelector(".f2x-myworkout-item"));
 		int lenght = classes.size();
 		edit.editWorkout();

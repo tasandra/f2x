@@ -32,8 +32,7 @@ public class WorkoutAddTest extends BaseTest {
 		assertEquals(true, avatar.isDisplayed());
 		String title = signin.goToBuilder();
 
-		// add two class
-
+		// add two classes
 		assertEquals("EXERCISES", title);
 		workout.addClasses();
 		assertEquals("EXERCISES", title);
@@ -46,8 +45,11 @@ public class WorkoutAddTest extends BaseTest {
 		signin.goToBuilder();
 		assertEquals("EXERCISES", title);
 		workout.dragDropClasses();
-		workout.addClasses();
+		assertEquals("EXERCISES", title);
+		workout.dragDropClasses();
 		workout.saveClasses2();
+		WebElement panel2 = workout.getWorkoutPanel();
+		assertEquals(true, panel2.isDisplayed());
 
 	}
 

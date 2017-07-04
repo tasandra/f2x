@@ -11,7 +11,7 @@ public class EditWorkout extends HomePage {
 
 	private Duration second = Duration.ofSeconds(3);
 
-	private By panel = By.className("f2x-preconfigure-workout-group");
+	private By panel = By.className("f2x-preconfigure-workout-group-i");
 	private By delete = By.xpath("//*[@class = 'f2x-myworkouts-options']/button[2]");
 	private By edit = By.xpath("//*[@class = 'f2x-myworkouts-options']/button");
 	private By deleteConf = By.cssSelector(".f2x-new-button-black");
@@ -53,7 +53,7 @@ public class EditWorkout extends HomePage {
 				.click();
 		actions.perform();
 
-		wait.until(ExpectedConditions.presenceOfElementLocated(deleteConf));
+		wait.until(ExpectedConditions.presenceOfElementLocated(deleteConf)).isDisplayed();
 		driver.findElement(deleteConf).click();
 	}
 

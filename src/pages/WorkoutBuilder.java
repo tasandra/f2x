@@ -31,7 +31,8 @@ public class WorkoutBuilder extends HomePage {
 				ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.f2x-exercise")));
 		WebElement drag = driver.findElement(By.cssSelector("div.f2x-exercise"));
 		WebElement drop = driver.findElement(By.cssSelector(".f2x-configure-workout-empty"));
-
+		
+		
 		actions.pause(second);
 		// actions.dragAndDrop(drag, drop);
 		actions.clickAndHold(drag);
