@@ -25,8 +25,9 @@ public class HeaderTest extends BaseTest {
 	}
 
 	@Test
-	public void logoTest() {
+	public void test() {
 		home.load();
+		// logo test
 		WebElement logo = driver.findElement(By.cssSelector(".f2x-logo-img>a>img"));
 		Dimension logoSize = logo.getSize();
 		
@@ -37,6 +38,17 @@ public class HeaderTest extends BaseTest {
 		// only need Y to test that it is at the top of the page
 		int topSection = 71;
 		assertTrue(logoLocation.y + logoSize.height < topSection);
+		
+		// join test
+		WebElement join = driver.findElement(By.cssSelector(".f2x-buttons-geo"));
+		Dimension joinSize = join.getSize();
+		
+		assertEquals(71, joinSize.height);
+		assertEquals(100, joinSize.width);
+		
+		Point joinLocation = join.getLocation();
+		assertTrue(joinLocation.y + joinSize.height <= topSection);
+				
 	}
 
 }

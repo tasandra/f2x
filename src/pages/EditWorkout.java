@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EditWorkout extends HomePage {
 
-	private Duration second = Duration.ofSeconds(3);
+	private Duration second = Duration.ofSeconds(1);
 
 	private By panel = By.className("f2x-preconfigure-workout-group-i");
 	private By delete = By.xpath("//*[@class = 'f2x-myworkouts-options']/button[2]");
@@ -49,7 +49,9 @@ public class EditWorkout extends HomePage {
 
 	public void deleteWorkout() {
 		actions.pause(second);
-		actions.moveToElement(driver.findElement(panel)).moveToElement(driver.findElement(delete))
+		actions.moveToElement(driver.findElement(panel));
+		actions.pause(second);
+		actions.moveToElement(driver.findElement(delete))
 				.click();
 		actions.perform();
 

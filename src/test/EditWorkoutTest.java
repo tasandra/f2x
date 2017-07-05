@@ -33,8 +33,13 @@ public class EditWorkoutTest extends LoginAuthenticationTest {
 
 	@Test
 	public void test() {
-		
+
 		home.goToMyWorkouts();
+		String selected = driver
+				.findElement(By.xpath("//*[@class = 'f2x-header-menu-items']/ul/li[2]"))
+				.getAttribute("selected");
+		assertTrue(selected, true);
+
 		WebElement item = edit.goToMyWorkouts();
 		assertEquals(true, item.isDisplayed());
 
@@ -60,9 +65,7 @@ public class EditWorkoutTest extends LoginAuthenticationTest {
 		for (int i = 0; i < panels.size(); i++) {
 			edit.deleteWorkout();
 		}
-		WebElement empty = edit.empty();
-		assertEquals(true, empty.isDisplayed());
-
+		WebElement empty2 = edit.empty();
+		assertEquals(true, empty2.isDisplayed());
 	}
-
 }

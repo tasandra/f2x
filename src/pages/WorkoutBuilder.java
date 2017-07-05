@@ -12,13 +12,23 @@ import modules.SignIn;
 
 public class WorkoutBuilder extends HomePage {
 
-	private Duration second = Duration.ofSeconds(2);
+	private Duration second = Duration.ofSeconds(1);
 
 	private By panel = By.className("f2x-preconfigure-workout-group");
 	private By save = By.xpath("//*[@class = 'f2x-workout-save-buttons']/button[2]");
 
 	public WorkoutBuilder(WebDriver driver) {
 		super(driver);
+	}
+	
+	public String getTime(){
+		String time = driver.findElement(By.cssSelector(".f2x-exercise-time.pc")).getText();	
+		return time;
+	}
+	
+	public String getCal(){
+		String cal = driver.findElement(By.cssSelector(".f2x-exercise-cal.pc")).getText();
+		return cal;
 	}
 
 	public void addClasses() {
@@ -43,6 +53,7 @@ public class WorkoutBuilder extends HomePage {
 		actions.pause(second);
 		//actions.dragAndDrop(drag, drop);
 		actions.clickAndHold(drag);
+		actions.pause(second);
 		actions.moveToElement(drop).release();
 		actions.perform();
 
