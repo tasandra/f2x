@@ -10,6 +10,32 @@ public class FilterWorkout extends HomePage {
 		super(driver);
 	}
 
+	public void resetAll() {
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@class = 'f2x-filter-label']/div/div")))
+				.click();
+	}
+
+	public String filterLeadTrainer() {
+
+		driver.findElement(By.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[3]/div[2]"))
+				.click();
+		driver.findElement(By
+				.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[3]/div[2]/div[2]/div/div[3]"))
+				.click();
+
+		return wait
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[3]/div[2]/div[1]")))
+				.getText();
+	}
+
+	public void filterIntensity() {
+		driver.findElement(By.xpath("//*[@class = 'f2x-filter-button-group']/button[2]")).click();
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.cssSelector(".f2x-exercise-img-labels.pc")));
+	}
+
 	public void filterAbs() {
 		driver.findElement(
 				By.xpath("//*[@class = 'f2x-exercise-filter-inter']/div[5]/div[2]/button[1]"))
@@ -26,5 +52,4 @@ public class FilterWorkout extends HomePage {
 				.visibilityOfElementLocated(By.cssSelector(".f2x-exercise-img-padding button")));
 
 	}
-
 }

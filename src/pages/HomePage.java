@@ -33,7 +33,7 @@ public class HomePage {
 
 	public WebElement goToMyWorkouts() {
 		driver.findElement(By.xpath("//*[@class = 'f2x-header-menu-items']/ul/li[2]")).click();
-
+		
 		return wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.cssSelector(".f2x-myworkout-item ")));
 		

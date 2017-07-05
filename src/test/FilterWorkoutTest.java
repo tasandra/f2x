@@ -35,6 +35,27 @@ public class FilterWorkoutTest extends BaseTest {
 		home.load();
 		workout.goToBuilder();
 		
+		// filter LEAD TRAINER
+		String trainer = filter.filterLeadTrainer();
+		List<WebElement> lead = driver.findElements(By.className("f2x-exercise-trainer"));
+		for (WebElement leadTrainer : lead){
+			String lt = leadTrainer.getText();
+			assertEquals(trainer, lt);
+		}
+		
+		filter.resetAll();
+		
+		// filter INTENSITY
+		filter.filterIntensity();
+		List<WebElement> inten = driver.findElements(By.className(".f2x-exercise-img-labels.pc"));
+		for (WebElement level : inten) {
+			String label = level.getText();
+			assertTrue(label.equals(2));
+		}
+		
+		filter.resetAll();
+		
+		// filter MUSCLE GROUP
 		filter.filterAbs();
 		List<WebElement> absSort = driver.findElements(By.className("f2x-exercise-img-labels"));
 		for (WebElement abs : absSort) {
@@ -46,7 +67,6 @@ public class FilterWorkoutTest extends BaseTest {
 		List<WebElement> abslegsSort = driver.findElements(By.className("f2x-exercise-img-labels"));
 		for (WebElement abs : abslegsSort) {
 			String label = abs.getText();
-			assertTrue(label.equals("Abs/Core"));
 			assertTrue(label.equals("Legs") || label.equals("Abs/Core"));
 		}
 		

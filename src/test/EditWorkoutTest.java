@@ -12,18 +12,19 @@ import org.openqa.selenium.WebElement;
 
 import modules.SignIn;
 import pages.EditWorkout;
+import pages.HomePage;
 import pages.WorkoutBuilder;
 
-public class EditWorkoutTest extends BaseTest {
-	private SignIn signin;
+public class EditWorkoutTest extends LoginAuthenticationTest {
 	private EditWorkout edit;
 	private WorkoutBuilder workout;
+	private HomePage home;
 
 	@Before
 	public void setUp() throws Exception {
-		signin = new SignIn(driver);
 		edit = new EditWorkout(driver);
 		workout = new WorkoutBuilder(driver);
+		home = new HomePage(driver);
 	}
 
 	@After
@@ -32,11 +33,8 @@ public class EditWorkoutTest extends BaseTest {
 
 	@Test
 	public void test() {
-		signin.load();
-		signin.signin("tasandra", "password");
-		WebElement avatar = signin.getAvatar();
-		assertEquals(true, avatar.isDisplayed());
-		edit.goToMyWorkouts();
+		
+		home.goToMyWorkouts();
 		WebElement item = edit.goToMyWorkouts();
 		assertEquals(true, item.isDisplayed());
 

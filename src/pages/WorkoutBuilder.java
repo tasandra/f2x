@@ -3,6 +3,7 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,16 +26,22 @@ public class WorkoutBuilder extends HomePage {
 				.click();
 
 	}
+	
+	public void jsAddClasses(){
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("document.querySelector('.f2x-exercise-add.cover-img').click()");
+		
+	}
 
 	public void dragDropClasses() {
 		wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.f2x-exercise")));
-		WebElement drag = driver.findElement(By.cssSelector("div.f2x-exercise"));
+				ExpectedConditions.visibilityOfElementLocated(By.className("f2x-exercise-img")));
+		WebElement drag = driver.findElement(By.cssSelector(".f2x-exercise-img.cover-img.cursor"));
 		WebElement drop = driver.findElement(By.cssSelector(".f2x-configure-workout-empty"));
 		
-		
 		actions.pause(second);
-		// actions.dragAndDrop(drag, drop);
+		//actions.dragAndDrop(drag, drop);
 		actions.clickAndHold(drag);
 		actions.moveToElement(drop).release();
 		actions.perform();

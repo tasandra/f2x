@@ -8,16 +8,17 @@ import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
 import modules.SignIn;
+import pages.HomePage;
 import pages.WorkoutBuilder;
 
-public class WorkoutAddTest extends BaseTest {
+public class WorkoutAddTest extends LoginAuthenticationTest {
 	private WorkoutBuilder workout;
-	private SignIn signin;
+	private HomePage home;
 
 	@Before
 	public void setUp() throws Exception {
 		workout = new WorkoutBuilder(driver);
-		signin = new SignIn(driver);
+		home = new HomePage(driver);
 	}
 
 	@After
@@ -26,11 +27,8 @@ public class WorkoutAddTest extends BaseTest {
 
 	@Test
 	public void test() {
-		signin.load();
-		signin.signin("tasandra", "password");
-		WebElement avatar = signin.getAvatar();
-		assertEquals(true, avatar.isDisplayed());
-		String title = signin.goToBuilder();
+		
+		String title = home.goToBuilder();
 
 		// add two classes
 		assertEquals("EXERCISES", title);
@@ -42,11 +40,12 @@ public class WorkoutAddTest extends BaseTest {
 		assertEquals(true, panel.isDisplayed());
 
 		// drop one class
-		signin.goToBuilder();
+		home.goToBuilder();
 		assertEquals("EXERCISES", title);
 		workout.dragDropClasses();
+		//workout.jsAddClasses();
 		assertEquals("EXERCISES", title);
-		workout.dragDropClasses();
+		workout.jsAddClasses();
 		workout.saveClasses2();
 		WebElement panel2 = workout.getWorkoutPanel();
 		assertEquals(true, panel2.isDisplayed());
