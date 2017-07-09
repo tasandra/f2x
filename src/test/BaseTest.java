@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseTest {
 	protected WebDriver driver;
 	protected WebDriverWait wait;
+	
 
 	@Before
 	public void baseSetUp() throws Exception {
