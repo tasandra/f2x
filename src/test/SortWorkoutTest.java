@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import pages.HomePage;
@@ -35,6 +36,8 @@ public class SortWorkoutTest extends BaseTest {
 	@Test
 	public void test() {
 		home.load();
+		String userAgent = (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+		System.out.print(userAgent);
 		workout.goToBuilder();
 // sort ascendent
 		sort.sortA_Z();
@@ -70,5 +73,4 @@ public class SortWorkoutTest extends BaseTest {
 		assertTrue(sortedList2.equals(obtainedList2));
 
 	}
-
 }

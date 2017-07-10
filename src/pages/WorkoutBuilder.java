@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import modules.SignIn;
-
 public class WorkoutBuilder extends HomePage {
 
 	private Duration second = Duration.ofSeconds(1);
