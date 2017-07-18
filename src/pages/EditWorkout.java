@@ -48,11 +48,12 @@ public class EditWorkout extends HomePage {
 	}
 
 	public void deleteWorkout() {
+		wait.until((ExpectedConditions
+				.visibilityOfElementLocated(By.cssSelector(".f2x-preconfigure-workout-group-i"))));
 		actions.pause(second);
 		actions.moveToElement(driver.findElement(panel));
 		actions.pause(second);
-		actions.moveToElement(driver.findElement(delete))
-				.click();
+		actions.moveToElement(driver.findElement(delete)).click();
 		actions.perform();
 
 		wait.until(ExpectedConditions.presenceOfElementLocated(deleteConf)).isDisplayed();

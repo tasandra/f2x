@@ -69,7 +69,6 @@ public class WorkoutAddTest extends LoginAuthenticationTest {
 		int sec3 = Integer.parseInt(parts3[1]);
 		int cal3 = Integer.parseInt( workout.getCal());
 		workout.dragDropClasses();
-		//workout.jsAddClasses();
 	
 		assertEquals("EXERCISES", title);
 		String[] parts4 = workout.getTime().split(":");
